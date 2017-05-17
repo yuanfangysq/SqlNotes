@@ -32,3 +32,6 @@ WHERE
 AND a.bsite like @bsite
 AND ((a.esite like @esite) or (a.middlesite like @esite))
 ORDER BY b.senddate  asc
+
+
+sp_MShelpcolumns 'tablename'
