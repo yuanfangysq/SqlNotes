@@ -48,7 +48,7 @@ namespace ajax_分页.sqlhelp
                     cmd.Parameters.AddRange(parameters); //将参数传递给我们的cmd命令对象  
 
 
-
+                   
                     DataTable dt = new DataTable();
                     using (SqlDataAdapter adapter = new SqlDataAdapter(cmd))
                     {
