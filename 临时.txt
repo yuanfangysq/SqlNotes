@@ -1,0 +1,83 @@
+ysqsiqiang
+ysq2017
+
+
+3月27号           石家庄正定豪狼20170503 回扣,垫付中转费,结算中转费,结算送货费 acchuikou,acczz,outacc_c,accsend_c
+                  赣州吉安精越20161114 广州都邦20110802旧库
+
+专线出分理根据网点统计到站的
+
+1800546  1222805
+QSP_GET_BAD_HEXIAO
+
+QSP_GET_ITEMS_TODAY 财务日记账
+
+USP_UPDATE_TH 退货处理
+
+USP_UPDATE_QXTH 取消退货
+
+
+
+
+
+
+客户需要在  货物外包 本地代理 提取界面 加入 垫付中转费  和税金字段 acctax acczz
+accnowzz  现付转账
+DZY_FGS_COUNT
+
+accjy
+
+
+acchkchangenumber
+
+3372045 
+
+
+
+
+    DataColumn ischecked = new DataColumn("ischecked", typeof(System.Int32));
+                ischecked.DefaultValue = 0;
+                dataset.Tables[0].Columns.Add(ischecked);
+                gridControl1.DataSource = dataset.Tables[0];
+
+
+sp_MShelpcolumns 'b_vehicle_yy_push'  
+
+
+
+
+
+ FROM B_TYD as a left join b_tyd_trace_tpl as b on(a.unit=b.unit) left join b_account_plus p on(a.unit=p.unit  AND p.account>0 AND xmtype='送货费') left join b_account as c on(p.pzid=c.id) left join b_account_check x on(a.unit = x.unit AND tag = '终端送货费')
+
+accfactduantu 实际接货费
+
+inacctotal 应收
+outacctotal 应付
+accallface 已付金额
+accallleft 未收金额
+
+5/8
+大车费用/本车总运费*本单运费？
+
+
+git config --global user.name "YYcopy"
+git config --global user.email "ysq19941125@163.com"
+
+
+现付、回单付、月结、运费合计、实收运费、送货费、保险费、报送费、叉车费、手续费、税金、接货费、装卸费、其它费用
+
+accsendout 异地送货费  outaccnow中转费
+
+case b.sendtimes when 1 then outaccnow else 0 end
+
+提付核销日报表  到站统计表
+
+DZY_FGS_COUNT
+
+QSP_MONEY_COUNT_BY_VEHICLE         QSP_MONEY_COUNT_BY_VEHICLE
+1、启用控货勾选了之后，那票货还是可以正常出库。
+2、利润统计表单车毛利没有扣除三包费、送货费。
+3、异常处理不能做哪个站点负责赔款，只有一个责任网点。
+4、三包流程 预约安装后需要维修保养，维修保养界面保存报错。
+5、预约安装之后不能做反操作。
+
