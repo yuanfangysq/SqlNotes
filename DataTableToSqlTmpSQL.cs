@@ -109,9 +109,9 @@ namespace help
                     break;
                 }
 
-                sb.AppendLine(item.ColumnName + " " + type +",");
+                sb.AppendLine("["+item.ColumnName+"]" + " " + type +",");
 
-                Columns += ","+ item.ColumnName;
+                Columns += ","+ "["+item.ColumnName+"]";
             }
 
 
