@@ -9,15 +9,7 @@ using Regent.Report.Business;
 
 namespace Regentsoft
 {
-    /// <summary>
-    /// 文件名称：RegentReport.cs
-    /// 功能摘要：丽晶报表模块的操作。
-    /// 原始作者：王明洋 kingmond@126.com
-    /// 编写日期：2008/01/22
-    /// 使用说明：请参照各个方法函数的定义。
-    /// 返回1表示有效，0表示无数据，负数表示出错
-    /// 修改记录：
-    /// 2011-02-15 王明洋 GetReportDataSet中增加扩展Where
+    
     /// </summary>
     //[WebService(Namespace = "http://tempuri.org/")]
     //[WebServiceBinding(ConformsTo = WsiProfiles.BasicProfile1_1)]
