@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Configuration;
@@ -8,7 +8,7 @@ using System.Reflection;
 
 namespace help
 {
-    class DataTableToSqlTmpSQL
+    class SqlHelep
     {
         private static string connStr = "Data Source=.;Initial Catalog=text;Integrated Security=True";
         /// <summary>  
@@ -68,6 +68,7 @@ namespace help
                     DataSet ds = new DataSet();
                     using (SqlDataAdapter adapter = new SqlDataAdapter(cmd))
                     {
+                       
                         //将cmd的执行结果填充到ds里面  
                         adapter.Fill(ds);
                         return ds;
@@ -86,9 +87,14 @@ namespace help
         public static string DataTableToSqlTmpSQL(DataTable da, string TbTemb)
         {
             StringBuilder sb = new StringBuilder();
-            bool isColumns = false;
+            bool isComplete = false;
             string Columns= "";
             string sql="";
+
+            if (da == null || da.Rows.Count <= 0)
+            {
+                return "";
+            }
 
             #region --创建临时表
             sb.AppendLine(" CREATE  TABLE " + TbTemb +" (");
@@ -99,7 +105,7 @@ namespace help
 
                 if (string.IsNullOrWhiteSpace(type))
                 {
-                    isColumns = true;
+                    isComplete = true;
                     break;
                 }
 
@@ -119,7 +125,7 @@ namespace help
 
             string Value="";
             //插入数据
-             if (!isColumns)
+             if (!isComplete)
              {
 
                  foreach (DataRow item in da.Rows)
@@ -128,17 +134,26 @@ namespace help
 
                      for (int i = 0; i < ItemArray.Length; i++)
                      {
-                         if (Isint(ItemArray[i]))
+                         if (ItemArray[i].GetType().FullName == "System.Boolean")
                          {
-                             Value += ","+ ItemArray[i].ToString();
+                             int istrue = Convert.ToBoolean(ItemArray[i]) ? 1 : 0;
+                             Value += "," + istrue.ToString();
                          }
                          else
                          {
-                             Value += ",' " + ItemArray[i].ToString() +" '";
+                             if (Isint(ItemArray[i]))
+                             {
+
+                                 Value += "," + ItemArray[i].ToString();
+                             }
+                             else
+                             {
+                                 Value += ",'" + ItemArray[i].ToString() + " '";
+                             }
                          }
                      }
 
-                     sb.AppendLine("INSERT INTO " + TbTemb + " ( " + Columns.Remove(0,1) + ") ");
+                     sb.AppendLine("INSERT INTO " + TbTemb + " (" + Columns.Remove(0,1) + ") ");
                      sb.AppendLine(" SELECT " + Value.Remove(0,1));
                      Value = "";
                  }
@@ -148,7 +163,7 @@ namespace help
 
 
 
-             if (!isColumns)
+             if (!isComplete)
              {
                  sql = sb.ToString();               
              }
@@ -164,7 +179,7 @@ namespace help
              {"System.string","VARCHAR(MAX)"},
              {"System.char","VARCHAR(MAX)"},
              
-             {"System.String.Boolean","BIT"},
+             {"System.Boolean","BIT"},
              {"System.DateTime","Datetime"},
              {"System.Decimal","DECIMAL(10,4)"},
              {"System.Double","DECIMAL(10,4)"},
